@@ -1,15 +1,21 @@
 <div class='exchange_box col-sm-12'>
-  <div class='card'>
 
-    <div class='card-header text-center'>
+  <div class="card text-white bg-info mb-3" style="max-width: 28rem;">
+    <div class='card-header text-center'>   
       Simule sua conversão
     </div>
-
+            
     <div class='card-block'>
       <%= form_tag('/convert', method: :get, id: 'exchange_form') do %>
         <div class='local_currency'>
+          <div class="float-right">
+            <div class="btn-group btn-group-sm" role="group" aria-label="...">
+              <button type="button" id="btnInvert" title="Inverter tipos de moedas" class="btn btn-success" style="margin-top: -5px;"><%= fa_icon "refresh",class: "fa-lg, text-white"%></button>
+              <button type="button" id="btnClean" title="Limpar filtros" class="btn btn-danger" style="margin-top: -5px;"><%= fa_icon "trash",class: "fa-lg, text-white"%></button>      
+            </div>
+          </div>
           <div class='form-group'>
-            <p class='title'>Moeda Local</p>
+            <p class='title'>Moeda Local </p>
             <%= select_tag 'source_currency', options_for_select(currency_list, 'BRL'), class: 'form-control', id: 'source_currency' %>
           </div>
 
@@ -21,14 +27,21 @@
         <div class='destination_currency'>
           <div class='form-group'>
             <p class='title'>Moeda Pretendida</p>
-            <%= select_tag 'target_currency', options_for_select(currency_list, 'EUR'), class: 'form-control', id: 'target_currency'%>
+            <%= select_tag 'target_currency', options_for_select(currency_list, 'USD'), class: 'form-control', id: 'target_currency'%>
           </div>
           <div class='form-group'>
             <input type='text' id='result' name='result' class='form-control' placeholder='Resultado' readonly>
           </div>
         </div>
-        <div>
-          <button type='submit' class='btn btn-primary btn-exchange col-md-12'>CONVERTER</button>
+
+         <div class='destination_currency'>
+          <div class='form-group'>
+            <p class='title'>Bitcoin</p>
+            <%= select_tag 'target_currency_bitcoin', options_for_select(currency_list_bitcoin, 'BTC'), class: 'form-control', id: 'target_currency_bitcoin'%>
+          </div>
+          <div class='form-group'>
+            <input type='text' id='result_coin' name='result_coin' class='form-control' placeholder='Resultado Bitcoin' readonly>
+          </div>
         </div>
       <% end %>
     </div>

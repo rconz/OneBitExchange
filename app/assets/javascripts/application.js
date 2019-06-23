@@ -13,6 +13,7 @@
 //= require jquery
 //= require tether/dist/js/tether
 //= require bootstrap/dist/js/bootstrap.bundle
+//= require gasparesganga-jquery-loading-overlay/dist/loadingoverlay.min
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks

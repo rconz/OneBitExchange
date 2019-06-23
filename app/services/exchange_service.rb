@@ -22,4 +22,19 @@ class ExchangeService
       e.response
     end
   end
+
+  def bitcoin
+    begin
+      #url = "http://economia.awesomeapi.com.br/jsonp/BTC-BRL/1"
+      target_currency =  @target_currency[0,3]
+      url = "http://economia.awesomeapi.com.br/jsonp/#{target_currency}-#{@source_currency}/1"
+      pp url
+      res = RestClient.get url
+      value = JSON.parse(res.body)[0]['bid'].to_f
+      
+      value * @amount
+    rescue RestClient::ExceptionWithResponse => e
+      e.response
+    end
+  end
 end
