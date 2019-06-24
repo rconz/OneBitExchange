@@ -6,6 +6,7 @@ $(document).ready ->
     $("#target_currency").val('USD')
     $("#amount").val('')
     $("#result").val('')
+    $("#result_coin").val('')
     $("#amount").focus()
 
   $("#btnInvert").click () ->
@@ -13,8 +14,11 @@ $(document).ready ->
     target_currency = $("#target_currency").val()
     $("#source_currency").val(target_currency)
     $("#target_currency").val(source_currency)
-    get_convert()
-    get_bitcoin()
+
+    amount = $("#amount").val()
+    if amount > 0
+      get_convert()
+      get_bitcoin()
 
   $("#source_currency").change (e) ->
     amount = $("#amount").val()
